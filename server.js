@@ -8,8 +8,11 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
+
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.render('index', {message: "Hello World!"});
 });
 
 app.listen(PORT, HOST);
