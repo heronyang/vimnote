@@ -1,0 +1,13 @@
+{
+  "name": "vimnote",
+  "version": "1.0.0",
+  "description": "Take note with Vim.",
+  "author": "Heron Yang <heron.yang.tw@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
