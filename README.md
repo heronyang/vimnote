@@ -2,12 +2,6 @@
 
 Take note with Vim.
 
-## Build
-
-```bash
-$ docker build -t heronyang/vimnote .
-```
-
 ## Run Locally
 
 Install
@@ -23,6 +17,14 @@ $ npm run
 ```
 
 ## Run in Docker
+
+Build
+
+```bash
+$ docker build -t heronyang/vimnote .
+```
+
+Run
 
 ```bash
 $ docker run -p 8080:8080 -d heronyang/vimnote
