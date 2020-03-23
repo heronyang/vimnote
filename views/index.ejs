@@ -1,6 +1,18 @@
 <html>
-  <head><title></title></head>
+  <head><title>Vimnote</title></head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/keymap/vim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/markdown/markdown.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.css" />
   <body>
-    <%= message %>
+    <form><textarea id="code"></textarea></form>
   </body>
+  <script>
+var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+  lineNumbers: true,
+  mode: "markdown",
+  keyMap: "vim",
+  showCursorWhenSelecting: true
+});
+  </script>
 </html>

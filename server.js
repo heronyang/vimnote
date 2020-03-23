@@ -12,7 +12,7 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("index", { message: "Hello World!" });
+  res.render("index");
 });
 
 app.get("/health", (req, res) => {
