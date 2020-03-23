@@ -8,13 +8,25 @@ Take note with Vim.
 $ docker build -t heronyang/vimnote .
 ```
 
-## Run
+## Run Locally
+
+Install
 
 ```bash
-$ docker run -p 49160:8080 -d heronyang/vimnote
+$ npm install
 ```
 
-It runs on [localhost:49160](http://localhost:49160)
+Run
+
+```bash
+$ npm run
+```
+
+## Run in Docker
+
+```bash
+$ docker run -p 8080:8080 -d heronyang/vimnote
+```
 
 ## Lint
 

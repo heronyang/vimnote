@@ -5,6 +5,7 @@
   "author": "Heron Yang <heron.yang.tw@gmail.com>",
   "main": "server.js",
   "scripts": {
+    "test": "mocha",
     "precommit": "lint-staged"
   },
   "dependencies": {
@@ -12,15 +13,18 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
+    "mocha": "^7.1.1",
     "prettier": "2.0.1",
     "pretty-quick": "^2.0.1",
+    "request": "^2.88.2",
     "standard": "^14.3.3"
   },
   "lint-staged": {
     "*.js": [
-      "./node_modules/prettier/bin-prettier.js --tab-width 2 --write",
+      "./node_modules/prettier/bin-prettier.js --write",
       "git add"
     ]
   },
