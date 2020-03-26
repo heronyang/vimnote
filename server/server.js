@@ -9,12 +9,6 @@ const HOST = "0.0.0.0";
 // App
 const app = express();
 
-app.set("view engine", "ejs");
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
 app.get("/health", (req, res) => {
   res.send("ok");
 });
