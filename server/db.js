@@ -7,9 +7,10 @@ const pool = (new require('pg')).Pool({
   password: process.env.DB_PASS
 })
 
-// Creates a database.
-const test = () => {
-    pool.query('SELECT * FROM doc', (error, results) => {
+// Inserts a new doc record.
+const insertDoc = (id, title, content) => {
+    pool.query('INSERT INTO doc (id, title, content) VALUES ($1, $2, $3)',
+        [id, title, content], (error, results) => {
         if (error) {
             throw error
         }
@@ -18,5 +19,5 @@ const test = () => {
 }
 
 module.exports = {
-    test,
+    insertDoc,
 }
