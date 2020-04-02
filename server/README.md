@@ -35,3 +35,13 @@ $ docker run -p 8080:8080 -d heronyang/vimnote
 ```bash
 $ npx standard --fix
 ```
+
+## Others
+
+### Database
+
+Init
+
+```
+$ npm run db_init
+```

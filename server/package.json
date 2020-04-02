@@ -5,6 +5,7 @@
   "author": "Heron Yang <heron.yang.tw@gmail.com>",
   "main": "server.js",
   "scripts": {
+    "db_init": "psql postgres < db_reset.sql && psql postgres -U vimnote_server < db_init.sql",
     "test": "mocha",
     "precommit": "lint-staged"
   },
