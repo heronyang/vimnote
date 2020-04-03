@@ -49,5 +49,5 @@ $ npm run lint
 Init
 
 ```bash
-$ npm run db_init
+$ npm run db-init
 ```
