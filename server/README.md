@@ -1,6 +1,6 @@
-# Vimnote
+# Vimnote - Server
 
-Take note with Vim.
+Server code for Vimnote.
 
 ## Run Locally
 
@@ -21,19 +21,25 @@ $ npm run
 Build
 
 ```bash
-$ docker build -t heronyang/vimnote .
+$ npm run docker-build
 ```
 
 Run
 
 ```bash
-$ docker run -p 8080:8080 -d heronyang/vimnote
+$ npm run docker-run
+```
+
+Stop
+
+```bash
+$ npm run docker-stop
 ```
 
 ## Lint
 
 ```bash
-$ npx standard --fix
+$ npm run lint
 ```
 
 ## Others
@@ -42,6 +48,6 @@ $ npx standard --fix
 
 Init
 
-```
+```bash
 $ npm run db_init
 ```

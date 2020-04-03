@@ -1,13 +1,27 @@
 {
-  "name": "vimnote",
+  "name": "vimnote-server",
   "version": "1.0.0",
-  "description": "Take note with Vim.",
+  "description": "Vimnote - Take Note with Vim. (Server Code)",
   "author": "Heron Yang <heron.yang.tw@gmail.com>",
   "main": "server.js",
+  "config": {
+    "pre-git": {
+      "pre-commit": [
+        "npm run lint",
+        "npm test"
+      ],
+      "pre-push": [],
+      "post-commit": [],
+      "post-merge": []
+    }
+  },
   "scripts": {
-    "db_init": "psql postgres < db_reset.sql && psql postgres -U vimnote_server < db_init.sql",
+    "db-init": "psql postgres < db_reset.sql && psql postgres -U vimnote_server < db_init.sql",
+    "lint": "standard --fix",
     "test": "mocha",
-    "precommit": "lint-staged"
+    "docker-build": "docker build -t heronyang/vimnote .",
+    "docker-start": "docker run -p 8080:8080 -d --name vimnote-server heronyang/vimnote",
+    "docker-stop": "docker container stop $(docker container ls -q --filter name=vimnote-server) && docker container rm vimnote-server"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -16,23 +30,8 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
     "mocha": "^7.1.1",
-    "prettier": "2.0.1",
-    "pretty-quick": "^2.0.1",
     "request": "^2.88.2",
     "standard": "^14.3.3"
-  },
-  "lint-staged": {
-    "*.js": [
-      "./node_modules/prettier/bin-prettier.js --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }
