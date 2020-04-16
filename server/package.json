@@ -10,7 +10,10 @@
         "npm run lint",
         "npm test"
       ],
-      "pre-push": [],
+      "pre-push": [
+        "npm run lint",
+        "npm test"
+      ],
       "post-commit": [],
       "post-merge": []
     }
@@ -24,6 +27,7 @@
     "docker-stop": "docker container stop $(docker container ls -q --filter name=vimnote-server) && docker container rm vimnote-server"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^7.18.2"

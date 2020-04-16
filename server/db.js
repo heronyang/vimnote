@@ -9,16 +9,27 @@ const pool = new pg.Pool({
 })
 
 // Inserts a new doc record.
-const insertDoc = (id, title, content) => {
-  pool.query('INSERT INTO doc (id, title, content) VALUES ($1, $2, $3)',
+const writeDoc = (id, title, content, callback) => {
+  pool.query('INSERT INTO doc (id, title, content) VALUES ($1, $2, $3) ON CONFLICT (id) DO UPDATE SET (id, title, content) = ($1, $2, $3)',
     [id, title, content], (error, results) => {
       if (error) {
         throw error
       }
-      console.log(results)
+      callback()
+    })
+}
+
+const readDoc = (id, callback) => {
+  pool.query('SELECT title, content FROM doc WHERE id=$1',
+    [id], (error, results) => {
+      if (error) {
+        throw error
+      }
+      callback(results.rows[0])
     })
 }
 
 module.exports = {
-  insertDoc
+  writeDoc,
+  readDoc
 }

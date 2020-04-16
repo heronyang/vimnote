@@ -10,13 +10,40 @@ const checkHealth = (req, res) => {
 const createDoc = (req, res) => {
   // TODO: Make sure there's no duplication by catching errors.
   const docId = crypto.randomBytes(5).toString('hex')
-  db.insertDoc(docId, /* title= */'', /* content= */'')
-  res.send(docId)
+  db.writeDoc(docId, /* title= */'', /* content= */'',
+    function () { res.send(docId) })
 }
 
-const app = require('express')()
+const updateDoc = (req, res) => {
+  const docId = req.body.docId
+  if (!docId) {
+    res.send('Missing docId.')
+    return
+  }
+  const title = req.body.title
+  const content = req.body.content
+  db.writeDoc(docId, title, content, function () { res.send('ok') })
+}
+
+const loadDoc = (req, res) => {
+  const docId = req.query.docId
+  if (!docId) {
+    res.send('Missing docId.')
+    return
+  }
+  db.readDoc(docId, function (result) { res.send(result) })
+}
+
+// Defines provided APIs.
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/health', checkHealth)
-app.get('/create', createDoc)
+app.post('/create', createDoc)
+app.post('/update', updateDoc)
+app.get('/load', loadDoc)
 
 // Starts server.
 const port = process.env.SERVER_PORT
